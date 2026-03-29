@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection Dashboard</title>
+    <!-- Modern Typeface -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <h1>XGBoost Sentinel</h1>
+            </div>
+            <p class="subtitle">Real-time WGAN-GP Credit Card Fraud Engine</p>
+        </header>
+
+        <!-- Main Content Grid -->
+        <div class="dashboard-grid">
+            
+            <!-- Left Side: Input Form -->
+            <div class="card form-card">
+                <h2>New Transaction</h2>
+                <form id="transaction-form">
+                    
+                    <div class="input-group">
+                        <label for="user_id">User ID (Customer)</label>
+                        <input type="text" id="user_id" placeholder="e.g. cust_123" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="merchant_id">Merchant ID</label>
+                        <input type="text" id="merchant_id" placeholder="e.g. merch_456" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="amount">Transaction Amount ($)</label>
+                        <input type="number" id="amount" step="0.01" min="0.01" placeholder="99.99" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="category">Merchant Category</label>
+                        <select id="category" required>
+                            <option value="grocery_pos">Grocery POS</option>
+                            <option value="shopping_pos">Shopping POS</option>
+                            <option value="shopping_net">Shopping Online</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="travel">Travel</option>
+                            <option value="gas_transport">Gas & Transport</option>
+                            <option value="food_dining">Food & Dining</option>
+                            <option value="personal_care">Personal Care</option>
+                            <option value="health_fitness">Health & Fitness</option>
+                            <option value="kids_pets">Kids & Pets</option>
+                            <option value="home">Home</option>
+                            <option value="misc_pos">Miscellaneous POS</option>
+                            <option value="misc_net">Miscellaneous Online</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="dist_to_merch">Distance to Terminal (Miles)</label>
+                        <input type="number" id="dist_to_merch" step="0.1" min="0" placeholder="Optional. Defaults to median.">
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="submit-btn">
+                        <span>Process Transaction</span>
+                        <div class="spinner hide" id="spinner"></div>
+                    </button>
+                    
+                    <div class="info-text">
+                        Tip: Submit the same User ID rapidly with high amounts to simulate a stolen card attack and trigger the ML velocity rules.
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right Side: Verdict / Results -->
+            <div class="card result-card">
+                <h2>AI Engine Verdict</h2>
+                
+                <div id="empty-state" class="empty-state">
+                    Waiting for transaction...
+                </div>
+
+                <div id="verdict-container" class="verdict-container hide">
+                    
+                    <!-- Dynamic Status Circle -->
+                    <div id="status-halo" class="status-halo authorize">
+                        <div id="status-icon" class="status-icon">✓</div>
+                    </div>
+                    
+                    <h1 id="status-text" class="status-text">AUTHORIZED</h1>
+
+                    <!-- Metrics Grid -->
+                    <div class="metrics-grid">
+                        <div class="metric-box">
+                            <span class="metric-label">Fraud Probability</span>
+                            <span class="metric-value highlight" id="prob-val">0.00%</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-label">Inference Latency</span>
+                            <span class="metric-value" id="latency-val">0 ms</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-label">Engine Block Threshold</span>
+                            <span class="metric-value">35.00%</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

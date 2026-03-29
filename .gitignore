@@ -1,0 +1,35 @@
+# Data (Too large for GitHub, will break push)
+data/*.csv
+data/*.zip
+
+# Virtual environments
+venv/
+env/
+.env
+condada/
+
+# Python Cache
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# System
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Agent
+.gemini/
+
+# Old local analysis metrics/logs
+mlruns/
+mlflow.db
+reports/
+models/
+main.py
+
+# Keep the production models! Render needs them for deployment!
+!API/models/*.pkl
