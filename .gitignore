@@ -29,7 +29,7 @@ mlruns/
 mlflow.db
 reports/
 models/
-main.py
+/main.py
 
 # Keep the production models! Render needs them for deployment!
 !API/models/*.pkl
