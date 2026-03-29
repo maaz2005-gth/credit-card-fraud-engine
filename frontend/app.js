@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const latencyVal = document.getElementById('latency-val');
     
     // API Endpoint
-    const API_URL = 'http://127.0.0.1:8000/predict';
+    const API_URL = '/predict';
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
