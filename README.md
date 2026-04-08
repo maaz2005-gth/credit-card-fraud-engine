@@ -18,7 +18,6 @@ This module handles offline extraction, transformation, tuning, and generation.
 *   **data_harmonizer.py**: Maps desperate schema structures into a unified pandas pipeline, optimizing purely for physical POS topologies.
 *   **features.py**: Handles Cyclical Time Encoding and scaling via Scikit-Learn's `QuantileTransformer` to Gaussianize skewed transaction amounts. Generates behavioral rules: `velocity_24h`, `spend_24h`, and `time_since_last_txn`. 
 *   **sampling.py**: Handles the generational minority class pipeline. Implements Adversarial Autoencoders (AAE) and Wasserstein GANs (WGAN-GP). WGAN-GP is used to synthesize highly realistic mathematical clones of fraudulent transactions without mode-collapsing.
-*   **run_ga.py & train_lodo.py**: Implements dynamic hyperparameter evolution via Genetic Algorithms and Leave-One-Domain-Out cross-validation. 
 *   **train_single_domain.py**: The definitive training loop. Parses harmonized output, subjects it to the WGAN-GP oversampler, feeds the balanced arrays into the XGBoost Classifier, and serializes the optimal model weights directly to `API/models/`.
 
 ### /API - The Web Server Engine
